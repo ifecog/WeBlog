@@ -1,0 +1,98 @@
+{% extends 'base.html' %} {% block title %}All Posts{% endblock title %}
+<p></p>
+{% block content %} {% load humanize %} {% load static %}
+<section class="main-content-w3layouts-agileits">
+  <div class="container">
+    <h3 class="tittle">All Posts</h3>
+    <div class="inner-sec">
+      <!--left-->
+      <div class="left-blog-info-w3layouts-agileits text-left">
+        <div class="row">
+          {% for post in posts %}
+          <div class="col-lg-4 card">
+            <a href="single.html">
+              <img
+                src="{{post.photo.url}}"
+                class="card-img-top img-fluid"
+                alt=""
+                style="
+                  min-width: 360px;
+                  max-width: 360px;
+                  min-height: 300px;
+                  max-height: 300px;
+                "
+              />
+            </a>
+            <div class="card-body">
+              <ul class="blog-icons my-4">
+                <li>
+                  <a href="#">
+                    <i class="far fa-calendar-alt"></i>{{post.upload_time}}</a
+                  >
+                </li>
+                <li class="mx-2">
+                  <a href="#"> <i class="far fa-comment"></i> 21</a>
+                </li>
+                <li>
+                  <a href="#"> <i class="fas fa-eye"></i> 2000</a>
+                </li>
+              </ul>
+              <h5 class="card-title">
+                <a href="single.html">{{post.title}}</a>
+              </h5>
+              <p class="card-text mb-3">
+                {{post.body | safe | truncatewords:35}}
+              </p>
+              <a href="single.html" class="btn btn-primary read-m">Read More</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <nav aria-label="Page navigation example" class="text-center">
+          {% if posts.has_other_pages %}
+          <ul class="pagination justify-content-left mt-4 text">
+            {% if posts.has_previous %}
+            <li class="page-item">
+              <a
+                class="page-link"
+                href="?page={{posts.previous_page_number}}"
+                tabindex="-1"
+                >Previous</a
+              >
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            {% endif %} {% for i in posts.paginator.page_range %}
+            <p></p>
+            {% if posts.number == i %}
+            <li class="page-item">
+              <a class="page-link" href="#">{{i}}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{i}}">{{i}}</a>
+            </li>
+            {% endif %} {% endfor %} {% if posts.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{posts.next_page_number}}"
+                >Next</a
+              >
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" href="#">Next</a>
+            </li>
+            {% endif %}
+          </ul>
+          {% endif %}
+        </nav>
+
+        <!--//left-->
+      </div>
+    </div>
+  </div>
+</section>
+<!--//main-->
+{% endblock content %}

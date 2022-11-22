@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Blog, Category
+from . models import Post, Category
 from django.utils.html import format_html
 
 # Register your models here.
@@ -18,7 +18,7 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 
-class BlogAdmin(admin.ModelAdmin):
+class PostAdmin(admin.ModelAdmin):
     def thumbnail(self, object):
         try:
             return format_html('<img src="{}" width="40" style="border-radius: 50px;" />'.format(object.photo.url))
@@ -36,4 +36,4 @@ class BlogAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Blog, BlogAdmin)
+admin.site.register(Post, PostAdmin)

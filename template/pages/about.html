@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block title %}About{% endblock title %}
+<p></p>
+{% block content %} {% load humanize %} {% load static %}
+	<!--/banner-->
+	<div class="banner-inner">
+	</div>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="{% url 'home' %}">Home</a>
+		</li>
+		<li class="breadcrumb-item active">About</li>
+	</ol>
+	<!--//banner-->
+	<!--/main-->
+	<section class="main-content-w3layouts-agileits">
+		<div class="container">
+			<h2 class="tittle text-center">About</h3>
+			<div class="row inner-sec">
+				<!--left-->
+				<div>
+					<div class="blog-grid-top">
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore magna
+							aliqua uta enim ad minim ven iam quis nostrud exercitation ullamco labor nisi ut aliquip exea commodo consequat duis
+							aute irudre dolor in elit sed uta labore dolore reprehender</p>
+					</div>
+				</div>
+				<!--//left-->
+				<!--right-->
+				
+				<!--//right-->
+			</div>
+        </br></br></br>
+            <div class="right-blog-info text-center">
+                <div class="tech-btm">
+                    <h4>Sign up to our newsletter</h4>
+                    <p>Pellentesque dui, non felis. Maecenas male </p>
+                    <form action="#" method="post">
+                        <input type="email" placeholder="Email" required="">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+            </div>
+		</div>
+	</section>
+	<!--//main-->
+{% endblock content %}

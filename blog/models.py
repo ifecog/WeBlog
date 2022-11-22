@@ -3,6 +3,7 @@ from ckeditor.fields import RichTextField
 from datetime import datetime
 from django.contrib.auth.models import User
 from django.db.models.deletion import SET_NULL
+from django.urls import reverse
 
 # Create your models here.
 
@@ -20,9 +21,12 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_url(self):
+        return reverse('posts_by_category', args=[self.slug])
 
 
-class Blog(models.Model):
+class Post(models.Model):
     writer = models.ForeignKey(User, on_delete=SET_NULL, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=100, unique=True)
