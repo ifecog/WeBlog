@@ -14,6 +14,7 @@ def home(request, category_slug=None):
         categories = get_object_or_404(Category, slug=category_slug)
         posts = Post.objects.all().filter(category=categories).order_by('upload_time')
         trends = Post.objects.all().filter(trending=True)
+        recents = Post.objects.all().order_by('upload_time')[:4]
         paginator = Paginator(posts, 4)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
@@ -21,6 +22,7 @@ def home(request, category_slug=None):
     else:
         posts = Post.objects.all().order_by('upload_time')
         trends = Post.objects.all().filter(trending=True)
+        recents = Post.objects.all().order_by('upload_time')[:4]
         paginator = Paginator(posts, 4)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
@@ -28,6 +30,7 @@ def home(request, category_slug=None):
     context = {
         'posts': page_obj,
         'trends': trends,
+        'recents': recents,
     }
 
     return render(request, 'pages/home.html', context)
@@ -65,3 +68,17 @@ def search(request):
 def about(request):
 
     return render(request, 'pages/about.html')
+
+
+def post_detail(request, category_slug, product_slug):
+    try:
+        single_post = Post.objects.get(
+            category__slug=category_slug, slug=product_slug)
+    except Exception as e:
+        raise e
+
+    context = {
+        'single_post': single_post,
+    }
+
+    return render(request, 'pages/post_detail.html', context)

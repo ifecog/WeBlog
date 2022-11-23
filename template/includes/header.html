@@ -61,9 +61,7 @@
               Categories
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'all_posts' %}"
-                >All (Matrix View)</a
-              >
+              <a class="dropdown-item" href="{% url 'home' %}">All</a>
               <div class="dropdown-divider"></div>
               {% for category in links %}
               <a class="dropdown-item" href="{{category.get_url}}"

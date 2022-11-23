@@ -29,7 +29,9 @@
             <span>Changing your World</span>
           </h3>
           <div class="read">
-            <a href="single.html" class="btn btn-primary read-m">Read More</a>
+            <a href="{% url 'all_posts' %}" class="btn btn-primary read-m"
+              >All Posts(Matrix View)</a
+            >
           </div>
         </div>
       </div>
@@ -40,7 +42,9 @@
             <span>feel the glamour universe</span>
           </h3>
           <div class="read">
-            <a href="single.html" class="btn btn-primary read-m">Read More</a>
+            <a href="{% url 'all_posts' %}" class="btn btn-primary read-m"
+              >All Posts(Matrix View)</a
+            >
           </div>
         </div>
       </div>
@@ -51,7 +55,9 @@
             <span>the soundtrack of life</span>
           </h3>
           <div class="read">
-            <a href="single.html" class="btn btn-primary read-m">Read More</a>
+            <a href="{% url 'all_posts' %}" class="btn btn-primary read-m"
+              >All Posts(Matrix View)</a
+            >
           </div>
         </div>
       </div>
@@ -62,7 +68,9 @@
             <span>the art of looking for trouble</span>
           </h3>
           <div class="read">
-            <a href="single.html" class="btn btn-primary read-m">Read More</a>
+            <a href="{% url 'all_posts' %}" class="btn btn-primary read-m"
+              >All Posts(Matrix View)</a
+            >
           </div>
         </div>
       </div>
@@ -73,7 +81,9 @@
             <span>the latest trends</span>
           </h3>
           <div class="read">
-            <a href="single.html" class="btn btn-primary read-m">Read More</a>
+            <a href="{% url 'all_posts' %}" class="btn btn-primary read-m"
+              >All Posts(Matrix View)</a
+            >
           </div>
         </div>
       </div>
@@ -84,7 +94,9 @@
             <span>enjoy the best destinations</span>
           </h3>
           <div class="read">
-            <a href="single.html" class="btn btn-primary read-m">Read More</a>
+            <a href="{% url 'all_posts' %}" class="btn btn-primary read-m"
+              >All Posts(Matrix View)</a
+            >
           </div>
         </div>
       </div>
@@ -133,7 +145,7 @@
         <div class="row mb-4">
           {% for post in posts %}
           <div class="col-md-6 card">
-            <a href="single.html">
+            <a href="{{post.get_url}}">
               <img
                 src="{{post.photo.url}}"
                 class="card-img-top img-fluid"
@@ -166,7 +178,9 @@
               <p class="card-text mb-3">
                 {{post.body | safe | truncatewords:20}}
               </p>
-              <a href="single.html" class="btn btn-primary read-m">Read More</a>
+              <a href="{{post.get_url}}" class="btn btn-primary read-m"
+                >Read More</a
+              >
             </div>
           </div>
           {% endfor %}
@@ -263,71 +277,36 @@
           </div>
           <div class="tech-btm">
             <h4>Recent Posts</h4>
+            {% for recent in recents %}
             <div class="blog-grids row mb-3 text-left">
               <div class="col-md-5 blog-grid-left">
-                <a href="single.html">
+                <a href="{{recent.get_url}}">
                   <img
-                    src="{% static 'images/1.jpg' %}"
+                    src="{{recent.photo.url}}"
                     class="card-img-top img-fluid"
                     alt=""
+                    style="
+                  min-width: 140px;
+                  max-width: 140px;
+                  min-height: 100px;
+                  max-height: 100px;
+                "
                   />
                 </a>
               </div>
               <div class="col-md-7 blog-grid-right">
                 <h5>
-                  <a href="single.html"
-                    >Pellentesque dui, non felis. Maecenas male non felis
-                  </a>
+                </br>
+                  <a href="{{recent.get_url}}">{{recent.title}} </a>
                 </h5>
                 <div class="sub-meta">
-                  <span> <i class="far fa-clock"></i> 20 Jan, 2018</span>
+                  <span>
+                    <i class="far fa-clock"></i>{{recent.upload_time}}</span
+                  >
                 </div>
               </div>
             </div>
-            <div class="blog-grids row mb-3 text-left">
-              <div class="col-md-5 blog-grid-left">
-                <a href="single.html">
-                  <img
-                    src="{% static 'images/5.jpg' %}"
-                    class="card-img-top img-fluid"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div class="col-md-7 blog-grid-right">
-                <h5>
-                  <a href="single.html"
-                    >Pellentesque dui, non felis. Maecenas male non felis
-                  </a>
-                </h5>
-                <div class="sub-meta">
-                  <span> <i class="far fa-clock"></i> 20 Jan, 2018</span>
-                </div>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-            <div class="blog-grids row mb-3 text-left">
-              <div class="col-md-5 blog-grid-left">
-                <a href="single.html">
-                  <img
-                    src="{% static 'images/3.jpg' %}"
-                    class="card-img-top img-fluid"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div class="col-md-7 blog-grid-right">
-                <h5>
-                  <a href="single.html"
-                    >Pellentesque dui, non felis. Maecenas male non felis
-                  </a>
-                </h5>
-                <div class="sub-meta">
-                  <span> <i class="far fa-clock"></i> 20 Feb, 2018</span>
-                </div>
-              </div>
-            </div>
-          </div>
+            {% endfor %} 
           <div class="tech-btm">
             <h4>Sign up to our newsletter</h4>
             <p>Pellentesque dui, non felis. Maecenas male</p>

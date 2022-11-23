@@ -10,7 +10,7 @@
         <div class="row">
           {% for post in posts %}
           <div class="col-lg-4 card">
-            <a href="single.html">
+            <a href="{{post.get_url}}">
               <img
                 src="{{post.photo.url}}"
                 class="card-img-top img-fluid"
@@ -25,25 +25,13 @@
             </a>
             <div class="card-body">
               <ul class="blog-icons my-4">
-                <li>
-                  <a href="#">
-                    <i class="far fa-calendar-alt"></i>{{post.upload_time}}</a
-                  >
-                </li>
-                <li class="mx-2">
-                  <a href="#"> <i class="far fa-comment"></i> 21</a>
-                </li>
-                <li>
-                  <a href="#"> <i class="fas fa-eye"></i> 2000</a>
-                </li>
+                <li><i class="far fa-calendar-alt"></i>{{post.upload_time}}</li>
+                <li class="mx-2"><i class="far fa-comment"></i> 21</li>
+                <li><i class="fas fa-eye"></i> 2000</li>
               </ul>
               <h5 class="card-title">
-                <a href="single.html">{{post.title}}</a>
+                <a href="{{post.get_url}}">{{post.title}}</a>
               </h5>
-              <p class="card-text mb-3">
-                {{post.body | safe | truncatewords:35}}
-              </p>
-              <a href="single.html" class="btn btn-primary read-m">Read More</a>
             </div>
           </div>
           {% endfor %}

@@ -66,7 +66,9 @@
   </div>
   <div class="container">
     <div class="contact_grid_right">
-      <form action="#" method="post">
+      {% include 'includes/messages.html' %}
+      <form action="{% url 'contact' %}" method="POST">
+        {% csrf_token %}
         <div class="row contact_left_grid">
           <div class="col-md-6 con-left">
             <div class="form-group">
@@ -74,7 +76,7 @@
               <input
                 class="form-control"
                 type="text"
-                name="firstname"
+                name="first_name"
                 placeholder=""
                 required=""
               />
@@ -84,7 +86,7 @@
               <input
                 class="form-control"
                 type="text"
-                name="lastname"
+                name="last_name"
                 placeholder=""
                 required=""
               />
@@ -94,7 +96,7 @@
               <input
                 class="form-control"
                 type="email"
-                name="Email"
+                name="email"
                 placeholder=""
                 required=""
               />
@@ -104,7 +106,7 @@
               <input
                 class="form-control"
                 type="text"
-                name="Subject"
+                name="subject"
                 placeholder=""
                 required=""
               />
@@ -113,7 +115,7 @@
           <div class="col-md-6 con-right">
             <div class="form-group">
               <label for="textarea">Message</label>
-              <textarea id="textarea" placeholder=""></textarea>
+              <textarea id="textarea" name="message" placeholder=""></textarea>
             </div>
             <input class="form-control" type="submit" value="Submit" />
           </div>

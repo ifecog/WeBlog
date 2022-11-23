@@ -21,7 +21,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     def get_url(self):
         return reverse('posts_by_category', args=[self.slug])
 
@@ -38,3 +38,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_url(self):
+        return reverse('post_detail', args=[self.category.slug, self.slug])
