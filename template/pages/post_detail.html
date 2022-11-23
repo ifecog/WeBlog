@@ -126,32 +126,45 @@
       <aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
         <div class="right-blog-info text-left">
           <div class="single-gd tech-btm">
-            <h4>Recent Post</h4>
+            <h4 class="text-center">Recent Post</h4>
+            {% for recent in recents %}
             <div class="blog-grids">
-              <div class="blog-grid-left">
-                <a href="single.html">
+              <div class="blog-grid-left text-center">
+                <a href="{{recent.get_url}}">
                   <img
-                    src="{% static 'images/b1.jpg' %}"
+                    src="{{recent.photo.url}}"
                     class="img-fluid"
                     alt=""
+                    style="
+                  min-width: 300px;
+                  max-width: 300px;
+                  min-height: 240px;
+                  max-height: 240px;
+                "
                   />
                 </a>
               </div>
               <div class="blog-grid-right">
-                <h5>
-                  <a href="single.html"
-                    >Pellentesque dui, non felis. Maecenas male</a
+                <h5 class="text-center">
+                  <a href="{{recent.get_url}}"
+                    >{{recent.title}}</a
                   >
                 </h5>
+                <div class="sub-meta text-center">
+                  <span> <i class="far fa-clock"></i>{{recent.upload_time}}</span>
+                </div>
+              </br></br>
               </div>
               <div class="clearfix"></div>
             </div>
-            </br></br>
+            {% endfor %}
+            </br></br></br>
             <div class="tech-btm">
-              <h4>Sign up to our newsletter</h4>
-              <p>Pellentesque dui, non felis. Maecenas male</p>
-              <form action="#" method="post">
-                <input type="email" placeholder="Email" required="" />
+              <h4 class="text-center">Sign up to our newsletter</h4>
+              <p class="text-center">Get weekly updates on our products and services</p>
+              <form action="{% url 'newsletter' %}" method="post">
+                {% csrf_token %}
+                <input type="email" name="email" placeholder="Email" required="" />
                 <input type="submit" value="Subscribe" />
               </form>
             </div>

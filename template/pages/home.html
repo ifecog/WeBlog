@@ -231,52 +231,41 @@
       <aside class="col-lg-4 agileits-w3ls-right-blog-con text-left">
         <div class="right-blog-info text-left">
           <div class="tech-btm">
-            <h4>Top stories of the week</h4>
+            <h4 class="text-center">Top stories of the week</h4>
+            {% for trend in trends %}
             <div class="blog-grids row mb-3">
               <div class="col-md-5 blog-grid-left">
-                <a href="single.html">
+                <a href="{{trend.get_url}}">
                   <img
-                    src="{% static 'images/1.jpg' %}"
+                    src="{{trend.photo.url}}"
                     class="card-img-top img-fluid"
                     alt=""
+                    style="
+                  min-width: 160px;
+                  max-width: 160px;
+                  min-height: 120px;
+                  max-height: 120px;
+                "
                   />
                 </a>
               </div>
               <div class="col-md-7 blog-grid-right">
+              </br>
                 <h5>
-                  <a href="single.html"
-                    >Pellentesque dui, non felis. Maecenas male non felis
+                  <a href="{{trend.get_url}}"
+                    >{{trend.title}}
                   </a>
                 </h5>
                 <div class="sub-meta">
-                  <span> <i class="far fa-clock"></i> 20 Jan, 2018</span>
+                  <span> <i class="far fa-clock"></i>{{trend.upload_time}}</span>
                 </div>
               </div>
             </div>
-            <div class="blog-grids row mb-3">
-              <div class="col-md-5 blog-grid-left">
-                <a href="single.html">
-                  <img
-                    src="{% static 'images/6.jpg' %}"
-                    class="card-img-top img-fluid"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div class="col-md-7 blog-grid-right">
-                <h5>
-                  <a href="single.html"
-                    >Pellentesque dui, non felis. Maecenas male non felis
-                  </a>
-                </h5>
-                <div class="sub-meta">
-                  <span> <i class="far fa-clock"></i> 20 Feb, 2018</span>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
+        </br>
           <div class="tech-btm">
-            <h4>Recent Posts</h4>
+            <h4 class="text-center">Recent Posts</h4>
             {% for recent in recents %}
             <div class="blog-grids row mb-3 text-left">
               <div class="col-md-5 blog-grid-left">
@@ -295,8 +284,8 @@
                 </a>
               </div>
               <div class="col-md-7 blog-grid-right">
+              </br>
                 <h5>
-                </br>
                   <a href="{{recent.get_url}}">{{recent.title}} </a>
                 </h5>
                 <div class="sub-meta">
@@ -307,11 +296,13 @@
               </div>
             </div>
             {% endfor %} 
+          </br>
           <div class="tech-btm">
-            <h4>Sign up to our newsletter</h4>
-            <p>Pellentesque dui, non felis. Maecenas male</p>
-            <form action="#" method="post">
-              <input type="email" placeholder="Email" required="" />
+            <h4 class="text-center">Sign up to our newsletter</h4>
+            <p class="text-center">Get weekly updates on our products and services</p>
+            <form action="{% url 'newsletter' %}" method="post">
+              {% csrf_token %}
+              <input type="email" name="email" placeholder="Email" required="" />
               <input type="submit" value="Subscribe" />
             </form>
           </div>

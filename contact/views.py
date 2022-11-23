@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Contact
+from .models import Contact, Newsletter
 from django.contrib import messages
 
 # verification emails
@@ -34,4 +34,6 @@ def contact(request):
         return redirect('contact')
 
     return render(request, 'pages/contact.html')
+
+
 
