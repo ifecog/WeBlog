@@ -1,11 +1,13 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Post, Category
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Post, Category, Comment
+from .forms import CommentForm
 from django.core.paginator import Paginator
 from django.db.models import Q
 from contact.models import Newsletter
 from django.core.mail import send_mail
 from weblog import settings
 from django.contrib import messages
+from django.urls import reverse
 
 
 # Create your views here.
@@ -79,11 +81,25 @@ def post_detail(request, category_slug, product_slug):
     single_post = get_object_or_404(
         Post, category__slug=category_slug, slug=product_slug)
 
-    recents = Post.objects.all().order_by('upload_time')[:3]
+    comments = single_post.comment_set.all()
+    comments_count = Comment.objects.all().filter(post=single_post).count()
+    form = CommentForm()
+    new_comment = None
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        new_comment = form.save(commit=False)
+        new_comment.post = single_post
+        new_comment.save()
+        return redirect(reverse('post_detail', kwargs={'category_slug': category_slug, 'product_slug': product_slug}))
+
+    recents = Post.objects.all().order_by('upload_time')[:6]
 
     context = {
         'single_post': single_post,
         'recents': recents,
+        'comments': comments,
+        'form': form,
+        'count': comments_count,
     }
 
     return render(request, 'pages/post_detail.html', context)

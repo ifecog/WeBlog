@@ -8,7 +8,7 @@ urlpatterns = [
          views.post_detail, name='post_detail'),
     path('allblogs/', views.all_posts, name='all_posts'),
     path('/search/', views.search, name='search'),
-    path('about/', views.about, name='about'),
-    path('newsletter/', views.newsletter, name='newsletter')
+    path('/about/', views.about, name='about'),
+    path('/newsletter/', views.newsletter, name='newsletter')
 
 ]
