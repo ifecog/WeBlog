@@ -1,0 +1,100 @@
+{% extends 'base.html' %} {% block title %}Signup{% endblock title %}
+<p></p>
+{% block content %} {% load static %}
+<!--/main-->
+<section class="main-content-w3layouts-agileits">
+  <div class="container">
+    <h3 class="tittle">Register Now</h3>
+    <div class="inner-sec">
+      <div class="login p-5 bg-light mx-auto mw-100">
+        {% include 'includes/messages.html' %}
+        <form action="{% url 'signup' %}" method="POST">
+          {% csrf_token %}
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="validationCustom01">First name</label>
+
+              <input
+                type="text"
+                class="form-control"
+                id="validationDefault01"
+                placeholder=""
+                required=""
+                name="first_name"
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="validationCustom02">Last name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationDefault02"
+                placeholder=""
+                required=""
+                name="last_name"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="validationCustom02">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationDefault02"
+                placeholder=""
+                required=""
+                name="username"
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="exampleInputEmail1 mb-2">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder=""
+                required=""
+                name="email"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="exampleInputPassword1 mb-2">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password1"
+                placeholder=""
+                required=""
+                name="password"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="exampleInputPassword2 mb-2">Confirm Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password2"
+                placeholder=""
+                required=""
+                name="confirmpassword"
+              />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary submit mb-4 text-center">
+            Sign Up
+          </button>
+         </br>
+          <p class="text-center">
+            Already have an account?<a href="{% url 'signin' %}"> Signin</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!--//main-->
+{% endblock content %}

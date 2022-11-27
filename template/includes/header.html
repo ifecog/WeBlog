@@ -8,17 +8,33 @@
           <i class="fab fa-linode"></i> Weblog</a
         >
       </div>
+      {% if not user.is_authenticated %}
       <div class="col-md-4 top-forms text-center mt-lg-3 mt-md-1 mt-0">
-        <span>Welcome Back!</span>
+        <span>Hi! Welcome to WeBlog!</span>
       </div>
       <div class="col-md-4 top-forms text-right mt-lg-3 mt-md-1 mt-0">
         <span class="mx-lg-4 mx-md-2 mx-1">
-          <a href="login.html"> <i class="fas fa-lock"></i> Sign In</a>
+          <a href="{% url 'signin' %}"> <i class="fas fa-lock"></i> Sign In</a>
         </span>
         <span>
-          <a href="register.html"> <i class="far fa-user"></i> Register</a>
+          <a href="{% url 'signup' %}"> <i class="far fa-user"></i> Sign Up</a>
         </span>
       </div>
+      {% else %}
+      <div class="col-md-4 top-forms text-center mt-lg-3 mt-md-1 mt-0">
+        <span>Hi {{user.first_name}}!</span>
+      </div>
+      <div class="col-md-4 top-forms text-right mt-lg-3 mt-md-1 mt-0">
+        <span class="mx-lg-4 mx-md-2 mx-1">
+          <a href="javascript:{document.getElementById('logout').submit()}">
+            <i class="far fa-user"></i> Sign Out</a
+          >
+          <form action="{% url 'signout' %}" id="logout" method="POST">
+            {% csrf_token %}
+          </form>
+        </span>
+      </div>
+      {% endif %}
     </div>
   </div>
 

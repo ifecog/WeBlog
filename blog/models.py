@@ -41,3 +41,15 @@ class Post(models.Model):
 
     def get_url(self):
         return reverse('post_detail', args=[self.category.slug, self.slug])
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    comment = RichTextField()
+    upload_time = models.DateTimeField(default=datetime.now, blank=True)
+
+    class Meta:
+        ordering = ['-upload_time']
+
+    def __str__(self):
+        return self.comment

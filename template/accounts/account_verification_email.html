@@ -1,0 +1,10 @@
+{% autoescape off %}
+
+Hi {{user.first_name}}
+
+Please click on the link below to verify your account
+http://{{domain}}{% url 'activate' uidb64=uid token=token %}
+
+Kindly ignore this mail if this is not you.
+
+{% endautoescape %}

@@ -3892,3 +3892,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 //# sourceMappingURL=bootstrap.js.map
+setTimeout(function(){
+  $('#message').fadeOut('slow');
+}, 3000)

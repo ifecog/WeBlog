@@ -76,13 +76,10 @@ def about(request):
 
 
 def post_detail(request, category_slug, product_slug):
-    try:
-        single_post = Post.objects.get(
-            category__slug=category_slug, slug=product_slug)
-        recents = Post.objects.all().order_by('upload_time')[:3]
+    single_post = get_object_or_404(
+        Post, category__slug=category_slug, slug=product_slug)
 
-    except Exception as e:
-        raise e
+    recents = Post.objects.all().order_by('upload_time')[:3]
 
     context = {
         'single_post': single_post,
