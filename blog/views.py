@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Category, Comment
+from .models import Post, Category, Comment, Team, About
 from .forms import CommentForm
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -74,7 +74,15 @@ def search(request):
 
 
 def about(request):
-    return render(request, 'pages/about.html')
+    teams = Team.objects.all().order_by('upload_time')
+    detail = About.objects.all()
+
+    context = {
+        'teams': teams,
+        'detail': detail,
+    }
+
+    return render(request, 'pages/about.html', context)
 
 
 def post_detail(request, category_slug, product_slug):
@@ -122,5 +130,6 @@ def newsletter(request):
         newsletter.save()
         messages.success(
             request, 'Thank you for subscribing for \WeBlog\'s weekly newsletter collection. Check your email inbox for more info')
+        redirect('home')
 
     return render(request, 'pages/home.html')

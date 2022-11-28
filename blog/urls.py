@@ -9,6 +9,6 @@ urlpatterns = [
     path('allblogs/', views.all_posts, name='all_posts'),
     path('search/', views.search, name='search'),
     path('about/', views.about, name='about'),
-    path('newsletter/', views.newsletter, name='newsletter')
+    path('', views.newsletter, name='newsletter')
 
 ]

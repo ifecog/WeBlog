@@ -55,7 +55,7 @@ def signup(request):
                         email_subject, message, from_email, recipient)
                     send_email.send(fail_silently=False)
 
-                    return redirect('/accounts/login/?command=verification&email='+email)
+                    return redirect('/accounts/signin/?command=verification&email='+email)
 
         else:
             messages.error(request, 'passwords do not match')
@@ -162,6 +162,7 @@ def reset_password(request, uidb64, token):
     else:
         messages.error(request, 'Invalid activation link')
         return redirect('forgotpassword')
+
 
 def password_reset(request):
     if request.method == 'POST':

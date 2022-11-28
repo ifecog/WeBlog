@@ -157,12 +157,6 @@ EMAIL_HOST_USER = 'darasimisamson90@gmail.com'
 EMAIL_HOST_PASSWORD = 'wuyjweuunktqxzdq'
 EMAIL_USE_TLS = True
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

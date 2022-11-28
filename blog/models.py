@@ -53,3 +53,21 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
+
+
+class Team(models.Model):
+    first_name = models.CharField(max_length=45, unique=True)
+    last_name = models.CharField(max_length=45, unique=True)
+    role = models.CharField(max_length=45, unique=True)
+    photo = models.ImageField(upload_to='team_photos/%y/%m/%d/', blank=True)
+    facebook_link = models.URLField(max_length=100)
+    twitter_link = models.URLField(max_length=100)
+    google_link = models.URLField(max_length=100)
+    upload_time = models.DateTimeField(default=datetime.now, blank=True)
+
+    def __str__(self):
+        return self.first_name
+
+class About(models.Model):
+    body = RichTextField()
+    

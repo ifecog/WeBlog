@@ -1674,4 +1674,14 @@ a.facebook:hover {
 	bottom: 0px;
 	transition: all 0.5s ease-in-out 0s;
 }
-  
+
+.padd-section {
+	padding-bottom: 80px;
+	padding-top: 80px;
+}
+@media (max-width: 992px) {
+	.padd-section {
+	  padding-top: 40px;
+	  padding-bottom: 40px;
+	}
+}

@@ -4,12 +4,6 @@
 	<!--/banner-->
 	<div class="banner-inner">
 	</div>
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item">
-			<a href="{% url 'home' %}">Home</a>
-		</li>
-		<li class="breadcrumb-item active">About</li>
-	</ol>
 	<!--//banner-->
 	<!--/main-->
 	<section class="main-content-w3layouts-agileits">
@@ -17,13 +11,11 @@
 			<h2 class="tittle text-center">About</h3>
 			<div class="row inner-sec">
 				<!--left-->
+				{% for i in detail %}
 				<div>
-					<div class="blog-grid-top">
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod tempor incididunt ut labore et dolore magna
-							aliqua uta enim ad minim ven iam quis nostrud exercitation ullamco labor nisi ut aliquip exea commodo consequat duis
-							aute irudre dolor in elit sed uta labore dolore reprehender</p>
-					</div>
+					<p>{{i.body | safe}}</p>
 				</div>
+				{% endfor %}
 				<!--//left-->
 				<!--right-->
 				
@@ -35,80 +27,35 @@
 				<div class="container" data-aos="fade-up">
 				  <div class="section-title text-center">
 		  
-					<h2>Team Member</h2>
-					<p class="separator">Integer cursus bibendum augue ac cursus .</p>
+					<h2>WeBlog Team</h2>
+					<p class="separator">Meet our Awesome Team Members</p>
 				  </div></br>
 		  
 				  <div class="row">
-		  
+					{% for team in teams %}
 					<div class="col-md-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
 					  <div class="team-block bottom">
-						<img src="{% static 'images/team/1.jpg' %}" class="img-responsive" alt="img">
+						<img src="{{team.photo.url}}" class="img-responsive" alt="img" >
 						<div class="team-content">
 						  <ul class="list-unstyled">
-							<li><a href="#"><i class="bi bi-facebook"></i></a></li>
-							<li><a href="#"><i class="bi bi-twitter"></i></a></li>
-							<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+							<li><a href="{{team.facebook_link}}"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="{{team.twitter_link}}"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="{{team.google_link}}"><i class="fab fa-google"></i></a></li>
 						  </ul>
-						  <span>manager</span>
-						  <h4>Kimberly Tran</h4>
+						  <span>{{team.role}}</span>
+						  <h4>{{team.first_name}} {{team.last_name}}</h4>
 						</div>
 					  </div>
 					</div>
-		  
-					<div class="col-md-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
-					  <div class="team-block bottom">
-						<img src="{% static 'images/team/2.jpg' %}" class="img-responsive" alt="img">
-						<div class="team-content">
-						  <ul class="list-unstyled">
-							<li><a href="#"><i class="bi bi-facebook"></i></a></li>
-							<li><a href="#"><i class="bi bi-twitter"></i></a></li>
-							<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-						  </ul>
-						  <span>manager</span>
-						  <h4>Kimberly Tran</h4>
-						</div>
-					  </div>
-					</div>
-		  
-					<div class="col-md-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
-					  <div class="team-block bottom">
-						<img src="{% static 'images/team/3.jpg' %}" class="img-responsive" alt="img">
-						<div class="team-content">
-						  <ul class="list-unstyled">
-							<li><a href="#"><i class="bi bi-facebook"></i></a></li>
-							<li><a href="#"><i class="bi bi-twitter"></i></a></li>
-							<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-						  </ul>
-						  <span>manager</span>
-						  <h4>Kimberly Tran</h4>
-						</div>
-					  </div>
-					</div>
-		  
-					<div class="col-md-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
-					  <div class="team-block bottom">
-						<img src="{% static 'assets/img/team/4.jpg' %}" class="img-responsive" alt="img">
-						<div class="team-content">
-						  <ul class="list-unstyled">
-							<li><a href="#"><i class="bi bi-facebook"></i></a></li>
-							<li><a href="#"><i class="bi bi-twitter"></i></a></li>
-							<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-						  </ul>
-						  <span>manager</span>
-						  <h4>Kimberly Tran</h4>
-						</div>
-					  </div>
-					</div>
-		  
+					{% endfor %}
 				  </div>
 				</div>
 			  </section><!-- End Team Section -->
-        </br></br></br>
+        		</br>
             <div class="right-blog-info text-center">
                 <div class="tech-btm">
-                    <h4>Sign up to our newsletter</h4>
-                    <p>Get weekly updates on our products and services</p>
+                    <h4>Sign up to our Newsletter</h4>
+                    <p>Get Weekly Updates on our Products and Services</p>
                     <form action="{% url 'newsletter' %}" method="POST">
 						{% csrf_token %}
                         <input type="email" name="email" placeholder="Email" required="">
