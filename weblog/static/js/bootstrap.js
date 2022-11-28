@@ -3893,5 +3893,61 @@ Object.defineProperty(exports, '__esModule', { value: true });
 })));
 //# sourceMappingURL=bootstrap.js.map
 setTimeout(function(){
-  $('#message').fadeOut('slow');
+    $('#message').fadeOut('slow');
 }, 3000)
+
+
+  /**
+   * Clients Slider
+   */
+new Swiper('.screens-slider', {
+  speed: 400,
+  loop: true,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false
+  },
+  slidesPerView: 'auto',
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'bullets',
+    clickable: true
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20
+    },
+    575: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    640: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    },
+    992: {
+      slidesPerView: 4,
+      spaceBetween: 20
+    }
+  }
+});
+
+  /**
+   * Initiate  glightbox 
+   */
+const glightbox = GLightbox({
+  selector: '.glightbox'
+});
+
+  /**
+   * Animation on scroll
+   */
+window.addEventListener('load', () => {
+  AOS.init({
+    duration: 1000,
+    easing: 'ease-in-out',
+    once: true,
+    mirror: false
+  })
+});

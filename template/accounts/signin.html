@@ -30,15 +30,16 @@
               required=""
             />
           </div>
-          <button type="submit" class="btn btn-primary submit mb-4">
+          <button type="submit" class="btn btn-primary submit mb-4" style="width: 100%">
             Sign In
           </button>
-          <p class="text-center">-------Or Signin with-------</p>
+          <p><a href="{% url 'forgotpassword' %}">Forgot Password?</a></p></br>
+          <p class="text-center">Or Signin with</p>
           <div class="text-center">
-            <a href="{% provider_login_url 'facebook' method='oauth2' %}" class="loginBtn loginBtn--facebook btn btn-primary">
+            <a href="{% provider_login_url 'facebook' method='oauth2' %}" class="loginBtn loginBtn--facebook btn btn-primary" style="width: 48%">
               <span>Facebook</span>
             </a>
-            <a href="{% provider_login_url 'google' %}" class="loginBtn loginBtn--google btn btn-primary">
+            <a href="{% provider_login_url 'google' %}" class="loginBtn loginBtn--google btn btn-primary" style="width: 48%">
               <span>Google</span>
             </a>
           </div></br>
