@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Post, Category, Comment, Team, About
+from . models import Post, Category, Comment, Team, About, View
 from django.utils.html import format_html
 
 # Register your models here.
@@ -58,3 +58,4 @@ admin.site.register(Post, PostAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Team, TeamAdmin)
 admin.site.register(About)
+admin.site.register(View)

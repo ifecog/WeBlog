@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block title %}Home{% endblock title %}
 <p></p>
-{% block content %} {% load humanize %} {% load static %}
+{% block content %} {% load humanize %} {% load static %} 
 <!--/banner-->
 {% if not 'search' in request.path %}
 <div class="banner">
@@ -165,12 +165,6 @@
                   <a href="#">
                     <i class="far fa-calendar-alt"></i>{{post.upload_time}}</a
                   >
-                </li>
-                <li class="mx-2">
-                  <a href="#"> <i class="far fa-comment"></i> 21</a>
-                </li>
-                <li>
-                  <a href="#"> <i class="fas fa-eye"></i> 2000</a>
                 </li>
               </ul>
               <h5 class="card-title">

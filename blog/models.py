@@ -41,6 +41,12 @@ class Post(models.Model):
 
     def get_url(self):
         return reverse('post_detail', args=[self.category.slug, self.slug])
+    
+class View(models.Model):
+    viewer = models.TextField(default=None)
+    
+    def __str__(self):
+        return self.viewer
 
 
 class Comment(models.Model):
@@ -53,7 +59,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
-
+    
 
 class Team(models.Model):
     first_name = models.CharField(max_length=45, unique=True)

@@ -1679,9 +1679,14 @@ a.facebook:hover {
 	padding-bottom: 80px;
 	padding-top: 80px;
 }
+#contact .social-links {
+	padding: 20px 0;
+}
 @media (max-width: 992px) {
 	.padd-section {
 	  padding-top: 40px;
 	  padding-bottom: 40px;
 	}
 }
+
+/* comment section */

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Category, Comment, Team, About
+from .models import Post, Category, Comment, Team, About, View
 from .forms import CommentForm
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -93,14 +93,42 @@ def post_detail(request, category_slug, product_slug):
     comments_count = Comment.objects.all().filter(post=single_post).count()
     form = CommentForm()
     new_comment = None
+
+    # replies = single_post.reply_set.all()
+    # new_reply = None
+    # form1 = ReplyForm()
+
     if request.method == 'POST':
         form = CommentForm(request.POST)
         new_comment = form.save(commit=False)
         new_comment.post = single_post
         new_comment.save()
+
+        # form1 = ReplyForm(request.POST)
+        # new_reply = form1.save(commit=False)
+        # new_reply.post = single_post
+        # new_reply.save()
+
         return redirect(reverse('post_detail', kwargs={'category_slug': category_slug, 'product_slug': product_slug}))
 
     recents = Post.objects.all().order_by('upload_time')[:6]
+
+    def get_ip(request):
+        address = request.META.get('HTTP_X_FORWARDED_FOR')
+        if address:
+            ip = address.split[','][-1].strip()
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+        return ip
+
+    ip = get_ip(request)
+    user = View(viewer=ip)
+    result = View.objects.filter(Q(viewer__icontains=ip))
+    if len(result) >= 1:
+        pass
+    else:
+        user.save()
+    view_count = View.objects.all().count()
 
     context = {
         'single_post': single_post,
@@ -108,6 +136,7 @@ def post_detail(request, category_slug, product_slug):
         'comments': comments,
         'form': form,
         'count': comments_count,
+        'view_count': view_count,
     }
 
     return render(request, 'pages/post_detail.html', context)

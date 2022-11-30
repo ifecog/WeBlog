@@ -1,0 +1,13 @@
+{% extends 'admin/base.html' %} {% load static %}{% block branding %}
+<h1 id="head">
+  <div class="col-md-4 logo text-left">
+    <a class="navbar-brand" href="/admin">
+      <i class="fab fa-linode"></i> Weblog</a
+    >
+  </div>
+</h1>
+{% endblock branding %}{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}" />
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/fontawesome-all.css' %}" rel="stylesheet" />
+{% endblock %}
