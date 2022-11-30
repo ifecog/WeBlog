@@ -4,6 +4,7 @@
     box-shadow: 0px 0px 3px 0px #ff0000;
 }
 
+
 #header a:link, #header a:visited, #logout-form button {
   color: #000 !important;
 }
@@ -51,6 +52,11 @@ h1 {
     color: #000;
   }
 
+body {
+    font-size: 0.875rem;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    color: #000);
+}
 /* .button.default, input[type="submit"].default, .submit-row input.default {
     background-color: #1c1f1f;
 }
@@ -58,4 +64,4 @@ h1 {
 .module h2, .module caption, .inline-group h2 {
     color: #000 !important;
 } */
-   */
+   \

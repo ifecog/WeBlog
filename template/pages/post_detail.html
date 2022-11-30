@@ -57,36 +57,6 @@
               <h5 class="mt-0">{{request.user}} | <span>{{comment.upload_time}}</span>
               </h5>
               <p>{{comment.comment | safe}}</p>
-              {% comment %} <button class="open-button" onclick="openForm()">reply</button>
-              <div class="form-popup" id="myForm">
-                <form action="#" class="form-container">
-                  {% csrf_token %}
-                  {{form1.reply}}              
-                  <button type="submit" class="btn">reply</button>
-                  <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-                </form>
-              </div>    
-              {% for reply in replies %}      
-              <div class="media mt-3">
-                <a class="d-flex pr-3" href="#">
-                  <img
-                    src="{% static 'images/t2.jpg' %}"
-                    alt=""
-                    class="img-fluid"
-                  />
-                </a>
-                
-
-                <!-- The form -->
-                
-                <div class="media-body">
-                  <h5 class="mt-0">{{request.user}}| <span>{{reply.upload_time}}</span></h5>
-                  <p>
-                    {{reply.reply}}
-                  </p>
-                </div>
-              </div>
-              {% endfor %} {% endcomment %}
             </div>
           </div>
           {% endfor %}

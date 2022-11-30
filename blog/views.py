@@ -148,7 +148,7 @@ def newsletter(request):
 
         newsletter = Newsletter(email=email)
 
-        #  Alternate method using send_mail function
+        #  Email
         subject = 'Newsletter Subscription'
         message = 'Hi reader! Thank you for subscribing for WeBlog\'s weekly newsletter collection'
         from_email = settings.EMAIL_HOST_USER
