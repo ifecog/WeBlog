@@ -96,7 +96,6 @@ DATABASES = {
         'NAME': 'weblog',
         'USER': 'postgres',
         'PASSWORD': 'Darasimi302',
-        'HOST': 'localhost',
     }
 }
 
