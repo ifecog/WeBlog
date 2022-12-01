@@ -1,0 +1,67 @@
+#header{
+	background-color: #fff !important;
+	color: #ff0000 !important;
+    box-shadow: 0px 0px 3px 0px #ff0000;
+}
+
+
+#header a:link, #header a:visited, #logout-form button {
+  color: #000 !important;
+}
+
+div.breadcrumbs {
+    background-color: #000;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background-color: #000;
+}
+
+/* #changelist-filter h2 {
+    background-color: #1c1f1f;
+} */
+
+.button, input[type="submit"], input[type="button"], .submit-row input, a.button {
+    background-color: #4e5557;
+}
+
+.button:active, input[type="submit"]:active, input[type="button"]:active, .button:focus, input[type="submit"]:focus, input[type="button"]:focus, .button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #000;
+}
+
+.submit-row input.default {
+    margin: 0 0 5px 8px;
+    text-transform: uppercase;
+    background-color: #000;
+}
+
+.button.default:active, input[type="submit"].default:active, .button.default:focus, input[type="submit"].default:focus, .button.default:hover, input[type="submit"].default:hover {
+    background-color: #000;
+}
+
+a:link, a:visited {
+    color: rgb(66, 175, 66);
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+}
+
+h1 {
+    margin: 0 0 20px;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: #000;
+  }
+
+body {
+    font-size: 0.875rem;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    color: #000);
+}
+/* .button.default, input[type="submit"].default, .submit-row input.default {
+    background-color: #1c1f1f;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    color: #000 !important;
+} */
+   \
