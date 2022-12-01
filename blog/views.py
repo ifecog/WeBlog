@@ -19,18 +19,18 @@ def home(request, category_slug=None):
 
     if category_slug:
         categories = get_object_or_404(Category, slug=category_slug)
-        posts = Post.objects.all().filter(category=categories).order_by('title')
-        trends = Post.objects.all().filter(
-            trending=True).order_by('upload_time')[:3]
+        posts = Post.objects.all().filter(category=categories).order_by('-upload_time')
+        trends = Post.objects.filter(
+            trending=True).order_by(-'upload_time')[:3]
         recents = Post.objects.all().order_by('-upload_time')[:4]
         paginator = Paginator(posts, 4)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
     else:
-        posts = Post.objects.all().order_by('title')
-        trends = Post.objects.all().filter(trending=True)
-        recents = Post.objects.all().order_by('upload_time')[:4]
+        posts = Post.objects.all().order_by('-upload_time')
+        trends = Post.objects.all().filter(trending=True)[:3]
+        recents = Post.objects.all().order_by('-upload_time')[:4]
         paginator = Paginator(posts, 4)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
