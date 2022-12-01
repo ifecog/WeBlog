@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-was^5(2pdde#9q%j8qax@+b3*mn61fvc@dcbm+%g9@6ec(x#3&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['weblogg.up.railway.app', '127.0.0:1']
+ALLOWED_HOSTS = ['*']
 
 LOGIN_REDIRECT_URL = 'home'
 # Application definition
