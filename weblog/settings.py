@@ -97,8 +97,8 @@ DATABASES = {
         'NAME': 'weblog',
         'USER': 'postgres',
         'PASSWORD': 'Darasimi302',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
     }
 }
 
