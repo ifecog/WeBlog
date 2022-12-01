@@ -22,7 +22,7 @@ def home(request, category_slug=None):
         posts = Post.objects.all().filter(category=categories).order_by('title')
         trends = Post.objects.all().filter(
             trending=True).order_by('upload_time')[:3]
-        recents = Post.objects.all().order_by('upload_time')[:4]
+        recents = Post.objects.all().order_by('upload_time')[4:-1]
         paginator = Paginator(posts, 4)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
