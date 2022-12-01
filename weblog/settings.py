@@ -94,11 +94,11 @@ WSGI_APPLICATION = 'weblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'weblog',
+        'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'Darasimi302',
-        'HOST': 'localhost',
-        # 'PORT': '5432',
+        'PASSWORD': 'qqmVYPdu4P8oncosyQZK',
+        'HOST': 'containers-us-west-105.railway.app',
+        'PORT': '6596',
     }
 }
 
