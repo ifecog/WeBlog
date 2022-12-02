@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 # verification emails
-from django.contrib.sites.shortcuts import get_current_site
+# from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import force_bytes
@@ -41,7 +41,7 @@ def signup(request):
                     user.save()
 
                     # user activation
-                    current_site = get_current_site(request)
+                    current_site = 'weblogg.up.railway.app/'
                     email_subject = 'Please activate your account',
                     message = render_to_string('accounts/account_verification_email.html', {
                         'user': user,
@@ -120,7 +120,7 @@ def forgot_password(request):
             user = User.objects.get(email__exact=email)
 
             # forgot password reset
-            current_site = get_current_site(request)
+            current_site = 'weblogg.up.railway.app/'
             email_subject = 'Reset your Password',
             message = render_to_string('accounts/reset_password_email.html', {
                 'user': user,
