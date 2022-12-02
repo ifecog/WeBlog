@@ -21,7 +21,7 @@ def home(request, category_slug=None):
         categories = get_object_or_404(Category, slug=category_slug)
         posts = Post.objects.all().filter(category=categories).order_by('-upload_time')
         trends = Post.objects.filter(
-            trending=True).order_by(-'upload_time')[:3]
+            trending=True).order_by('-upload_time')[:3]
         recents = Post.objects.all().order_by('-upload_time')[:4]
         paginator = Paginator(posts, 4)
         page_number = request.GET.get('page')
@@ -93,7 +93,7 @@ def post_detail(request, category_slug, product_slug):
     comments_count = Comment.objects.all().filter(post=single_post).count()
     form = CommentForm()
     new_comment = None
- 
+
     if request.method == 'POST':
         form = CommentForm(request.POST)
         new_comment = form.save(commit=False)
