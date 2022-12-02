@@ -93,21 +93,12 @@ def post_detail(request, category_slug, product_slug):
     comments_count = Comment.objects.all().filter(post=single_post).count()
     form = CommentForm()
     new_comment = None
-
-    # replies = single_post.reply_set.all()
-    # new_reply = None
-    # form1 = ReplyForm()
-
+ 
     if request.method == 'POST':
         form = CommentForm(request.POST)
         new_comment = form.save(commit=False)
         new_comment.post = single_post
         new_comment.save()
-
-        # form1 = ReplyForm(request.POST)
-        # new_reply = form1.save(commit=False)
-        # new_reply.post = single_post
-        # new_reply.save()
 
         return redirect(reverse('post_detail', kwargs={'category_slug': category_slug, 'product_slug': product_slug}))
 
