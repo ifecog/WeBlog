@@ -45,7 +45,7 @@ def home(request, category_slug=None):
 
 
 def all_posts(request):
-    posts = Post.objects.all().order_by('upload_time')
+    posts = Post.objects.all().order_by('-upload_time')
     paginator = Paginator(posts, 9)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -104,22 +104,22 @@ def post_detail(request, category_slug, product_slug):
 
     recents = Post.objects.all().order_by('upload_time')[:6]
 
-    def get_ip(request):
-        address = request.META.get('HTTP_X_FORWARDED_FOR')
-        if address:
-            ip = address.split[','][-1].strip()
-        else:
-            ip = request.META.get('REMOTE_ADDR')
-        return ip
+    # def get_ip(request):
+    #     address = request.META.get('HTTP_X_FORWARDED_FOR')
+    #     if address:
+    #         ip = address.split[','][-1].strip()
+    #     else:
+    #         ip = request.META.get('REMOTE_ADDR')
+    #     return ip
 
-    ip = get_ip(request)
-    user = View(viewer=ip)
-    result = View.objects.filter(Q(viewer__icontains=ip))
-    if len(result) >= 1:
-        pass
-    else:
-        user.save()
-    view_count = View.objects.all().count()
+    # ip = get_ip(request)
+    # user = View(viewer=ip)
+    # result = View.objects.filter(Q(viewer__icontains=ip))
+    # if len(result) >= 1:
+    #     pass
+    # else:
+    #     user.save()
+    # view_count = View.objects.all().count()
 
     context = {
         'single_post': single_post,
@@ -127,7 +127,7 @@ def post_detail(request, category_slug, product_slug):
         'comments': comments,
         'form': form,
         'count': comments_count,
-        'view_count': view_count,
+        # 'view_count': view_count,
     }
 
     return render(request, 'pages/post_detail.html', context)
