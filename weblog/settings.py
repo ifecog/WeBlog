@@ -30,7 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://weblogg.up.railway.app']
 
 LOGIN_REDIRECT_URL = 'home'
 # Application definition
